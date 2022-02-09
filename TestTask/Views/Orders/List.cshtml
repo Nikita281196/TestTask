@@ -1,0 +1,77 @@
+﻿@using TestTask.Data.Models
+@model IEnumerable<OrdersInformation>
+@{
+
+}
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <h1 style="text-align:center">Список ордеров</h1>
+    @{ 
+        foreach (var order in Model)
+        {
+        <div class="col-lg-4">
+            <h3>Идентификатор заказа: @order.Id</h3>
+            <p>Пользовательский идентификатор: @order.CustomId</p>
+            <p>Идентификатор исходного заказа: @order.SourceOrderId</p>
+            <p>Наименование: @order.Title</p>
+            <p>URL для отслеживания: @order.TrackingUrl</p>
+            <p>Номер для отслеживания: @order.TrackingNumber</p>
+            <p>Статус: @order.Status</p>
+            <p>Статус исполнения: @order.RenderStatus</p>
+            <p>Статус платежа: @order.PaymentStatus</p>
+            @if (order.DeliveryAddress != null)
+            {
+                <p>Адрес доставки:</p>
+                <p style="text-indent: 25px;">Индекс: @order.DeliveryAddress.ZipCode</p>
+                <p style="text-indent: 25px;">Адрес 1: @order.DeliveryAddress.AddressLine1</p>
+                <p style="text-indent: 25px;">Адрес 2: @order.DeliveryAddress.AddressLine2</p>
+                <p style="text-indent: 25px;">Описание: @order.DeliveryAddress.Description</p>
+                <p style="text-indent: 25px;">Город: @order.DeliveryAddress.City</p>
+                <p style="text-indent: 25px;">Страна: @order.DeliveryAddress.Country</p>
+                <p style="text-indent: 25px;">Полное имя: @order.DeliveryAddress.FullName</p>
+                <p style="text-indent: 25px;">Номер телефона: @order.DeliveryAddress.Phone</p>
+            }
+            @if (order.Shipping != null)
+            {
+                <p>Перевозка:</p>
+                <p style="text-indent: 25px;">Идентификатор: @order.Shipping.Id</p>
+                <p style="text-indent: 25px;">Наименование: @order.Shipping.Title</p>
+                <p style="text-indent: 25px;">Номер телефона: @order.Shipping.Phone</p>
+                <p style="text-indent: 25px;">Эл. почта: @order.Shipping.Email</p>
+                <p style="text-indent: 25px;">Тип: @order.Shipping.Type</p>
+            }
+            <p>Количество комментариев: @order.CommentsCount</p>
+            <p>Ссылка для скачивания: @order.DownloadLink</p>
+            <p>URL отображения для предварительного просмотра: @order.PreviewImageUrl</p>
+            <p>Цена: @order.Price</p>
+            <p>Цена со скидкой: @order.DiscountPrice</p>
+            <p>Цена доставки: @order.DeliveryPrice</p>
+            <p>Окончательная цена: @order.TotalPrice</p>
+            <p>Оплачено: @order.PaidPrice</p>
+            <p>Идентификатор пользователя: @order.UserId</p>
+            <p>Идентификатор учетной записи компании пользователя: @order.UserCompanyAccountId</p>
+            <p>Наименование скидки: @order.DiscountTitle</p>
+            <p>Дата создания: @order.DateCreated</p>
+            <p>Дата изменения: @order.DateModified</p>
+            <p>Дата платежа: @order.DatePaid</p>
+            <p>Дата готовности: @order.DateReady</p>
+            <p>Последний загруженный платежный документ: @order.LastDownloadedPaymentDocument</p>
+            <p>Уникальный идентификатор платежной системы: @order.PaymentSystemUniqueId</p>
+            <p>Идентификатор клиента Google: @order.GoogleClientId</p>
+            <p>Заказы подрядчика: @order.ContractorOrders</p>
+
+            
+
+
+
+
+        </div>
+        }
+    }
+</body>
+</html>
